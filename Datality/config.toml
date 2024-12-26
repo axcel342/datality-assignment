@@ -1,0 +1,25 @@
+[[inputs.http]]
+  # URL to query OpenWeather API
+  urls = ["https://api.openweathermap.org/data/2.5/weather?lat=31.5656822&lon=74.3141829&appid=84ba04ba0ff2b479043e7e542c412f64"]
+
+  # Data format to parse (OpenWeather returns JSON)
+  data_format = "json"
+
+  # Optional: Set the HTTP request method (GET is default)
+  method = "GET"
+
+  # Optional: Set how frequently to poll the URL (default is 10s)
+  interval = "5s"
+
+  # Optional: Enable/disable SSL verification
+  insecure_skip_verify = false
+
+  # Enable HTTP response body printing (useful for debugging)
+  tag_keys = ["name"]  # E.g., city name tag
+
+[[outputs.file]]
+  ## Files to write to, "stdout" is a specially handled file.
+  files = ["stdout"]
+  
+  ## Data format to output.
+  data_format = "json"

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  telegraf:
+    image: telegraf:latest
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    environment:
+      - OPENWEATHERMAP_API_KEY=${OPENWEATHERMAP_API_KEY}
+      - TIMESCALE_HOST=${TIMESCALE_HOST}
+      - TIMESCALE_PORT=${TIMESCALE_PORT}
+      - TIMESCALE_DB=${TIMESCALE_DB}
+      - TIMESCALE_USER=${TIMESCALE_USER}
+      - TIMESCALE_PASSWORD=${TIMESCALE_PASSWORD}
+    restart: always
+    networks:
+      - weather-net
+
+networks:
+  weather-net:
+    driver: bridge
